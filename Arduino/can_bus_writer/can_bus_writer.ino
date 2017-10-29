@@ -39,54 +39,14 @@ void loop()
           
           msgID = 0x349;
           int data2[] = { 0x76, 0x0F, 0xBE, 0x1A, 0x00 };
-          send_message(msgID, data2, 5);
+          //send_message(msgID, data2, 5);
 
           msgID = 0x0C0;
           int data3[] = { 0xF4, 0xFF };
-          send_message(msgID, data3, 2);
+          //send_message(msgID, data3, 2);
 
-          
-
-        
         Serial.println("Sent");
-        
         delay(100);
-}
-
-//void send_key_in()
-//{
-//          tCAN message;
-//
-//        message.id = 0x130; //formatted in HEX
-//        message.header.rtr = 0;
-//        message.header.length = 5; //formatted in DEC
-//        message.data[0] = 0x45;
-//        message.data[1] = 0x42;
-//        message.data[2] = 0x69;
-//        message.data[3] = 0x8F; 
-//        message.data[4] = 0xFE;
-//
-//        mcp2515_bit_modify(CANCTRL, (1<<REQOP2)|(1<<REQOP1)|(1<<REQOP0), 0);
-//        mcp2515_send_message(&message);
-//        send_message(0x130, [0x45, 0x42, 0x69, 0x8F, 0xFE])
-//}
-
-void send_fuel_value()
-{
-          tCAN message;
-
-        message.id = 0x1A1; //formatted in HEX
-        message.header.rtr = 0;
-        message.header.length = 5; //formatted in DEC
-        message.data[0] = 0xBE;
-        message.data[1] = 0xDE;
-        message.data[2] = 0x12;
-        message.data[3] = 0x04; 
-        message.data[4] = 0x91;
-        //BE DE 12 04 91
-
-        mcp2515_bit_modify(CANCTRL, (1<<REQOP2)|(1<<REQOP1)|(1<<REQOP0), 0);
-        mcp2515_send_message(&message);
 }
 
 void send_message(int messageID, int data[], int len)
